@@ -179,3 +179,14 @@ download and install http://www.ient.rwth-aachen.de/~asbach/OpenCV-Private-Frame
 (install with sudo cp -r /Volumes/OpenCV\ Private\ Framework/OpenCV.framework/ /Library/Frameworks/OpenCV.framework)
 build with: PKG_CONFIG_PATH=/Library/Frameworks/Mono.framework/Versions/2.10.9/lib/pkgconfig:/Library/Frameworks/OpenCV.framework make compiler
 (until I can figure out how to set that automatically)
+
+When you build you'll get a bunch of errors on prim.s/o. The problem is the generated Makefile doesn't know to use the -arch i386 on the assembler step.
+
+Modify src/c/o/Makefile to have -arch i386 on line 23 (AR = ar should be AR = ar -i386) then make clean and make compiler again.
+
+Build is currently failing on mythryld with:
+
+/Users/ola/Documents/mythryl-omork/bin/mythryl-runtime-intel32: Nonfatal error:  Unable to map 8519680 bytes, errno = 19
+/Users/ola/Documents/mythryl-omork/bin/mythryl-runtime-intel32: Fatal error:  Unable to allocate ram region for book_to_sibid__global
+             sh/make-compiler-executable:   Compiler link failed, no mythryld executable
+
