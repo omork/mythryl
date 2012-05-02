@@ -20,7 +20,8 @@ SHELL =		/bin/sh
 CC =		@CC@
 CPP =		@CPP@
 LD_LIBS2 =	$(LD_LIBS) @LIBS@
-AS =		as
+# TODO: MAKE THIS NOT BE HARD CODED TO i386 @OM
+AS =		as -arch i386
 AR =		ar
 ARFLAGS =	rcv
 RANLIB =	@RANLIB@
