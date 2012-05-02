@@ -175,6 +175,7 @@ Direct link to .deb package for mythryl-mode.el:
 Building on Mac OS X: Lion (darwin > 3)
 =======================================
 download and install http://download.mono-project.com/archive/2.10.9/macos-10-x86/10/MonoFramework-MDK-2.10.9_10.macos10.xamarin.x86.dmg
-download and install http://wiki.nuigroup.com/Installing_OpenCV_on_Mac_OS_X
+download and install http://www.ient.rwth-aachen.de/~asbach/OpenCV-Private-Framework-1.2.dmg
+(install with sudo cp -r /Volumes/OpenCV\ Private\ Framework/OpenCV.framework/ /Library/Frameworks/OpenCV.framework)
 build with: PKG_CONFIG_PATH=/Library/Frameworks/Mono.framework/Versions/2.10.9/lib/pkgconfig:/Library/Frameworks/OpenCV.framework make compiler
 (until I can figure out how to set that automatically)
