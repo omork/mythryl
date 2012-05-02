@@ -223,6 +223,12 @@ extern char	*sys_errlist[];
 #  define HAS_UCONTEXT
 #  define HAVE_LIBDIS_H 0
 
+// to get our mmap sorted out we need to include it here and then mirror MAP_ANONYMOUS
+#  define HAS_ANON_MMAP
+#  include <sys/mman.h>
+#  define MAP_ANONYMOUS MAP_ANON
+
+
 #elif defined(OPSYS_DARWIN) && defined(OPSYS_MACOS_10_1) // MacOS X 10.1	// NB: OS_NAME is now defined in   src/c/h/architecture-and-os-names-system-dependent.h
 #  define HAS_POSIX_LIBRARIES
 #  define HAS_POSIX_SIGS
