@@ -386,8 +386,8 @@ extern void FPEEnable (void);			// From 						   src/c/machine-dependent/prim.in
 #    define INT_OVFLW(s, c)	(((s) == SIGFPE) && ((c) == FPE_FLTOVF))
      // See /usr/include/mach/i386/thread_status.h
 #    define GET_SIGNAL_CODE(info,scp)	((info)->si_code)
-#    define GET_SIGNAL_PROGRAM_COUNTER(scp)		((scp)->uc_mcontext->ss.eip)
-#    define SET_SIGNAL_PROGRAM_COUNTER(scp, addr)	{ (scp)->uc_mcontext->ss.eip = (int) addr; }
+#    define GET_SIGNAL_PROGRAM_COUNTER(scp)		((scp)->uc_mcontext->__ss.__eip)
+#    define SET_SIGNAL_PROGRAM_COUNTER(scp, addr)	{ (scp)->uc_mcontext->__ss.__eip = (int) addr; }
 #    define SIG_Zero_Heap_Allocation_Limit(scp)	{ LIB7_intel32Frame[HEAP_ALLOCATION_LIMIT_intel32OFFSET] = 0; }
 
 #  else

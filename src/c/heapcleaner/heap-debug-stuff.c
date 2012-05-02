@@ -11,6 +11,12 @@
 #include <errno.h>
 #include <pthread.h>
 
+#if (defined(TARGET_INTEL32) && defined(OPSYS_DARWIN))
+// don't do anything, libdis.h isn't allowed on OS X/intel/lion
+#undef HAVE_LIBDIS_H
+#endif
+
+
 #if HAVE_LIBDIS_H
 #include <libdis.h>	// x86 disasembler library from Debian packages:  libdisasm0 + libdisasm-dev
 #endif

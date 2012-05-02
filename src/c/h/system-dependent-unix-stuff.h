@@ -1,3 +1,4 @@
+
 // system-dependent-unix-stuff.h
 //
 // This file contains operating system dependent paths,
@@ -100,7 +101,7 @@
 #define INCLUDE_FCNTL_H		<sys/fcntl.h>
 #endif
 
-#if defined(OPSYS_OSF1) || defined(OPSYS_DUNIX) || defined(OPSYS_AIX) || defined(OPSYS_LINUX) || defined(OPSYS_MKLINUX) || defined(OPSYS_FREEBSD) || defined(OPSYS_NETBSD) || defined(OPSYS_NETBSD2) || defined(OPSYS_OPENBSD) || defined(OPSYS_CYGWIN)
+#if defined(OPSYS_OSF1) || defined(OPSYS_DUNIX) || defined(OPSYS_AIX) || defined(OPSYS_LINUX) || defined(OPSYS_MKLINUX) || defined(OPSYS_FREEBSD) || defined(OPSYS_NETBSD) || defined(OPSYS_NETBSD2) || defined(OPSYS_OPENBSD) || defined(OPSYS_CYGWIN) || defined(OPSYS_DARWIN)
 #  define INCLUDE_DIRENT_H	<dirent.h>
 #elif defined(OPSYS_MACH)
 #  define INCLUDE_DIRENT_H	<sys/dir.h>
@@ -207,6 +208,20 @@ typedef int ssize_t;
 // These declarations are not in <errno.h>
 extern int	sys_nerr;
 extern char	*sys_errlist[];
+
+#elif (defined(OPSYS_DARWIN) && defined(TARGET_INTEL32)) // NB: OS_NAME is now defined in   src/c/h/architecture-and-os-names-system-dependent.h
+#  define HAS_POSIX_LIBRARIES
+#  define HAS_BSD_SIGS
+#  define HAS_GETRUSAGE
+#  define HAS_SETITIMER
+#  define HAS_MMAP
+#  define HAS_SELECT
+#  define HAS_SCALBN
+#  define HAS_ILOGB
+#  define HAS_UCONTEXT
+#  define HAS_STRERROR
+#  define HAS_UCONTEXT
+#  define HAVE_LIBDIS_H 0
 
 #elif defined(OPSYS_DARWIN) && defined(OPSYS_MACOS_10_1) // MacOS X 10.1	// NB: OS_NAME is now defined in   src/c/h/architecture-and-os-names-system-dependent.h
 #  define HAS_POSIX_LIBRARIES

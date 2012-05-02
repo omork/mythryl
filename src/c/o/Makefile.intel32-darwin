@@ -8,16 +8,16 @@
 SHELL =		/bin/sh
 
 MAKE =		make
-AS =		/usr/bin/as
+AS =		/usr/bin/as -arch i386
 CC =		cc -ansi
-CFLAGS =	-g -O2 -std=c99 -Wall
-CPP =           cc -x assembler-with-cpp -E -P -ansi
+CFLAGS =	-g -O2 -std=c99 -Wall -m32
+CPP =           cc -x assembler-with-cpp -E -P -ansi -m32
 XOBJS =
 XLIBS =         ../lib/dynamic-loading/libmythryl-dynamic-loading.a
 LD_LIBS =       -ldl
 XDEFS =
 BASE_DEFS =
-DEFS		= $(XDEFS) $(BASE_DEFS) -DHOST_INTEL32 -DTARGET_INTEL32 -DOPSYS_UNIX -DOPSYS_DARWIN -DOPSYS_MACOS_10_2 -DGNU_ASSEMBLER -DDLOPEN -DINDIRECT_CFUNC
+DEFS		= $(XDEFS) $(BASE_DEFS) -DHOST_INTEL32 -DTARGET_INTEL32 -DOPSYS_UNIX -DOPSYS_DARWIN -DOPSYS_MACOS_10_2 -DGNU_ASSEMBLER -DDLOPEN -DINDIRECT_CFUNC -D_XOPEN_SOURCE
 TARGET =	intel32
 VERSION =	v-intel32-darwin
 RUNTIME =	mythryl-runtime-intel32.intel32-darwin
